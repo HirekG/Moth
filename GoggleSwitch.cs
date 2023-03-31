@@ -1,23 +1,22 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class RoofTilemapSortingOrder : MonoBehaviour
+public class TilemapLayerFlipper : MonoBehaviour
 {
-    public GameObject Retro1;
-    public GameObject Retro2;
-    public GameObject Retro3;
+    [SerializeField] private Tilemap[] tilemapsToFlip;
 
-    private PrRetro1 = Retro1.GetComponent<Tilemap>();
-    private PrRetro2 = Retro2.GetComponent<Tilemap>();
-    private PrRetro3 = Retro3.GetComponent<Tilemap>();
+    private bool isFlipped = false;
 
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.G))
         {
-            PrRetro1.GetComponent<Renderer>().sortingOrder = PrRetro1.GetComponent<Renderer>().sortingOrder * -1;
-            PrRetro2.GetComponent<Renderer>().sortingOrder = PrRetro2.GetComponent<Renderer>().sortingOrder * -1;
-            PrRetro3.GetComponent<Renderer>().sortingOrder = PrRetro3.GetComponent<Renderer>().sortingOrder * -1;
+            isFlipped = !isFlipped;
+
+            foreach (var tilemap in tilemapsToFlip)
+            {
+                tilemap.GetComponent<Renderer>().sortingOrder *= -1;
+            }
         }
     }
-
+}
