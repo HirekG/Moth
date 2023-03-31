@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class ItemInteraction : MonoBehaviour
 {
-    public GameObject item = GameObject.Find("Goggles");
-    public GameObject eSprite = GameObject.Find("eIcon");
+    public GameObject item;
+    public GameObject eSprite;
     public float interactionDistance = 1.0f;
     private bool playerNearby = false;
 
