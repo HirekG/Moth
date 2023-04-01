@@ -1,15 +1,27 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class TilemapLayerFlipper : MonoBehaviour
+public class GoggleSwitch : MonoBehaviour
 {
     [SerializeField] private Tilemap[] tilemapsToFlip;
 
-    private bool isFlipped = false;
+    public GameObject otherObject;
+    public ItemInteraction ItemInteractionScript;
 
+
+    private bool isFlipped = false;
+    public bool ItemGot = false;
+
+    private void Start()
+    {
+        ItemInteractionScript = otherObject.GetComponent<ItemInteraction>();
+    }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.G))
+        
+        ItemGot = ItemInteractionScript.ItemGot;
+        if (Input.GetKeyDown(KeyCode.G) && ItemGot)
         {
             isFlipped = !isFlipped;
 
@@ -19,4 +31,9 @@ public class TilemapLayerFlipper : MonoBehaviour
             }
         }
     }
+}
+
+internal class OtherScript
+{
+    public bool ItemGot { get; internal set; }
 }

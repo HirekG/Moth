@@ -1,12 +1,12 @@
 using UnityEngine;
 
-public class ItemInteraction : MonoBehaviour
+public class ShovelInteraction : MonoBehaviour
 {
-    public GameObject item;
+    public GameObject Shovel;
     public GameObject eSprite;
     public float interactionDistance = 1.0f;
     private bool playerNearby = false;
-    public bool ItemGot = false;
+    public bool ShovelGot = false;
 
     void Update()
     {
@@ -15,9 +15,9 @@ public class ItemInteraction : MonoBehaviour
             eSprite.SetActive(true);
             if (Input.GetKeyDown(KeyCode.E))
             {
-                item.SetActive(false);
+                Shovel.SetActive(false);
                 eSprite.SetActive(false);
-                ItemGot = true;
+                ShovelGot = true;
             }
         }
         else
