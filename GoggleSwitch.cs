@@ -12,6 +12,7 @@ public class GoggleSwitch : MonoBehaviour
 
     private bool isFlipped = false;
     public bool ItemGot = false;
+    public bool NormalVision = true;
 
     private void Start()
     {
@@ -24,6 +25,7 @@ public class GoggleSwitch : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.G) && ItemGot)
         {
             isFlipped = !isFlipped;
+            NormalVision = !NormalVision;
 
             foreach (var tilemap in tilemapsToFlip)
             {
