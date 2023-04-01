@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class DigInteraction : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class DigInteraction : MonoBehaviour
     public bool ShovelGot = false;
     public bool HoleSeen = false;
     public bool NormalVision = false;
+
+    private Tilemap TilemapToDig;
 
     public GameObject otherObject;
     public HoleOnScreen HoleOnScreenScript;
@@ -21,6 +24,8 @@ public class DigInteraction : MonoBehaviour
 
     private void Start()
     {
+        TilemapToDig = TilesToDig.GetComponent<Tilemap>();
+
         HoleOnScreenScript = otherObject.GetComponent<HoleOnScreen>();
         ShovelInteractionScript = other2Object.GetComponent<ShovelInteration>();
         GoggleSwitchScript = other3Object.GetComponent<GoggleSwitch>();
